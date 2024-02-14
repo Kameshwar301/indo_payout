@@ -1,0 +1,29 @@
+package io.mobi.test.api.test.payout;
+
+import io.mobi.test.api.entity.dao.MDR;
+import io.mobi.test.api.entity.request.IndoPayoutRequest;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.testng.annotations.Test;
+
+public class IndoPayoutTest extends PayoutBaseTest {
+
+  private static final Logger logger = LoggerFactory.getLogger(IndoPayoutTest.class);
+
+  @Test(groups = {"sanity", "srs", "lrs"}, priority = 1, description = "positive test to validate the indonesian payout")
+  public void testPayout() {
+
+    logger.info("Sanity - Payout Test");
+
+    String masterMid = "MM030303";
+    String fmPayoutMdr = "1";
+    String minFmPayoutValue = "";
+
+    MDR mdr = getMdr(masterMid);
+    printData(mdr);
+
+    IndoPayoutRequest indoPayoutRequest = new IndoPayoutRequest();
+    submitIndoRequest(indoPayoutRequest);
+  }
+
+}
